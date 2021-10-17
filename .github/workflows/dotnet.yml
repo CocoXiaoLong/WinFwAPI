@@ -1,20 +1,25 @@
-name: Manually triggered workflow
-on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Person to greet'
-        required: true
-        default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
-        default: 'The Octoverse'
+name: Dev Build on Push
 
+on:
+  push:
+    branches: dev
+    
 jobs:
-  say_hello:
-    runs-on: ubuntu-latest
+  build:  
+    runs-on: windows-latest
+  
     steps:
-      - run: |
-          echo "Hello ${{ github.event.inputs.name }}!"
-          echo "- in ${{ github.event.inputs.home }}!"
+      - name: Build Project
+        run: dotnet build --no-restore
+      
+      
+      - name: Setup NuGet
+        # You may pin to the exact commit or the version.
+        # uses: NuGet/setup-nuget@04b0c2b8d1b97922f67eca497d7cf0bf17b8ffe1
+        uses: NuGet/setup-nuget@v1.0.5
+        with:
+          nuget-version: latest
+          
+      
+          
+    

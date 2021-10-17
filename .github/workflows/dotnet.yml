@@ -1,8 +1,9 @@
 name: Dev Build on Push
 
 on:
-  push:
+  push: 
     branches: dev
+  workflow_dispatch:
     
 jobs:
   build:  

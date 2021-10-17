@@ -31,6 +31,22 @@ using WinFwAPI;
 FirewallRule rule = Firewall.GetRule("%NAME%");
 ```
 
+### Add Rule
+```CSharp
+using WinFwAPI;
+FirewallRule rule = new FirewallRule();
+// Set Options of FirewallRule
+Firewall.AddRule(rule);
+```
+
+### Update Rule
+```CSharp
+using WinFwAPI;
+FirewallRule rule = FirewallRule.GetRule("%NAME%");
+// Set Options of FirewallRule
+Firewall.UpdateRule(rule);
+```
+
 ### Disclaimer
 <p>English isn't my first language</p>
 <p>You're allowed to absolutly roast me for bad language</p>

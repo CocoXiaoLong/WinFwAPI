@@ -1,4 +1,5 @@
 ﻿using NetFwTypeLib;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -7,7 +8,6 @@ namespace WinFwAPI
 {
     public sealed class FirewallRule
     {
-        private bool import;
         private string name;
 
         public string Name
@@ -15,7 +15,9 @@ namespace WinFwAPI
             get => name; 
             set
             {
-                if (!import) if (Firewall.HasRule(value)) throw new FirewallException("Rule already exists");
+                // If the Rule exists, throw
+                if (Firewall.HasRule(value)) throw new FirewallException("Rule already exists");
+                // Else set name
                 name = value;
             }
         }
@@ -30,21 +32,17 @@ namespace WinFwAPI
         public FirewallDirection Direction { get; set; }
         public bool Enabled { get; set; }
         public FirewallAction Action { get; set; }
-
+        public string Grouping { get; set; }
 
         public FirewallRule()
         {
 
         }
-        private FirewallRule(bool imported)
-        {
-            this.import = imported;
-        }
         internal static FirewallRule FromFwAPI(INetFwRule rule)
         {
-            return new FirewallRule(true)
+            return new FirewallRule
             {
-                Name = rule.Name,
+                name = rule.Name,
                 Description = rule.Description,
                 ApplicationName = rule.ApplicationName,
                 ServiceName = rule.serviceName,
@@ -55,8 +53,50 @@ namespace WinFwAPI
                 RemoteAddresses = rule.RemoteAddresses,
                 Direction = (FirewallDirection)rule.Direction,
                 Enabled = rule.Enabled,
-                Action = (FirewallAction)rule.Action
+                Action = (FirewallAction)rule.Action,
+                Grouping = rule.Grouping
             };
+        }
+
+        public INetFwRule ToAPIRule()
+        {
+            string SetNow = "";
+            try
+            {
+                var rule = Firewall.CreateNew();
+                SetNow = "Name";
+                rule.Name = name;
+                SetNow = "Description";
+                rule.Description = Description;
+                SetNow = "ApplicationName";
+                rule.ApplicationName = ApplicationName;
+                SetNow = "ServiceName";
+                rule.serviceName = ServiceName;
+                SetNow = "Protocol";
+                rule.Protocol = (int)Protocol;
+                SetNow = "LocalAddresses";
+                rule.LocalAddresses = LocalAddresses;
+                SetNow = "RemoteAddresses";
+                rule.RemoteAddresses = RemoteAddresses;
+                SetNow = "LocalPorts";
+                rule.LocalPorts = LocalPorts; 
+                SetNow = "RemotePorts";
+                rule.RemotePorts = RemotePorts;
+                SetNow = "Enabled";
+                rule.Enabled = Enabled;
+                SetNow = "Direction";
+                rule.Direction = (NET_FW_RULE_DIRECTION_)(int)Direction;
+                SetNow = "Action";
+                rule.Action = (NET_FW_ACTION_)(int)Action;
+                SetNow = "Grouping";
+                rule.Grouping = Grouping;
+
+                return rule;
+            }
+            catch (Exception err)
+            {
+                throw new FirewallException($"Counldn't set 'Rule.{SetNow}'", err);
+            }
         }
     }
 

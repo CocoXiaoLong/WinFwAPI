@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace WinFwAPI
 {
     [Serializable]
-    internal class FirewallException : Exception
+    public sealed class FirewallException : Exception
     {
         public FirewallException()
         {

@@ -19,7 +19,7 @@ namespace RootTest
             {
                 Name = "OneRule",
                 Action = FirewallAction.BLOCK,
-                ApplicationName = @"C:\Users\z-col\OneDrive\Dokumente\UrPackages\MyFirstPackage.xml",
+                ApplicationName = @"",
                 Description = "Block connections",
                 Direction = FirewallDirection.IN,
                 Grouping = "OneWay",

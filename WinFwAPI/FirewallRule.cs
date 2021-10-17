@@ -58,7 +58,7 @@ namespace WinFwAPI
             };
         }
 
-        public INetFwRule ToAPIRule()
+        internal INetFwRule ToAPIRule()
         {
             string SetNow = "";
             try

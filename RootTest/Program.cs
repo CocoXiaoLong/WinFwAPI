@@ -11,12 +11,11 @@ namespace RootTest
     {
         static void Main(string[] args)
         {
-            var exiRule = Firewall.GetAPIRules().First();
             var cRule = new FirewallRule
             {
                 Name = "OneRule",
                 Action = FirewallAction.BLOCK,
-                ApplicationName = @"",
+                ApplicationName = @"C:\DevResources\MicrosoftEdgeSetup.exe",
                 Description = "Block connections",
                 Direction = FirewallDirection.IN,
                 Grouping = "OneWay",
@@ -27,7 +26,6 @@ namespace RootTest
                 RemoteAddresses = "*",
                 RemotePorts = "*"
             };
-            var newRule = cRule.ToAPIRule();
 
             Firewall.AddRule(cRule);
 

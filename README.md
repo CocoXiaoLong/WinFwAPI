@@ -31,3 +31,6 @@ using WinFwAPI;
 FirewallRule rule = Firewall.GetRule("%NAME%");
 ```
 
+### Disclaimer
+<p>English isn't my first language</p>
+<p>You're allowed to absolutly roast me for bad language</p>

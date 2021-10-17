@@ -11,7 +11,7 @@ jobs:
   
     steps:
       - name: Build Project
-        run: dotnet build --no-restore -c debug -f NETFramework4.8 WinFwAPI.sln
+        run: dotnet build RootTest/RootTest.csproj
       
       
       - name: Setup NuGet

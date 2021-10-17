@@ -11,15 +11,12 @@ namespace RootTest
     {
         static void Main(string[] args)
         {
-            var fwr = Firewall.GetAPIRules().First();
-
-
-
-            Firewall.AddRule(new FirewallRule
+            var exiRule = Firewall.GetAPIRules().First();
+            var cRule = new FirewallRule
             {
                 Name = "OneRule",
                 Action = FirewallAction.BLOCK,
-                ApplicationName = @"C:\Users\z-col\OneDrive\Dokumente\UrPackages\MyFirstPackage.xml",
+                ApplicationName = @"C:\Users\z-col\Downloads\MicrosoftEdgeSetup.exe",
                 Description = "Block connections",
                 Direction = FirewallDirection.IN,
                 Grouping = "OneWay",
@@ -28,9 +25,12 @@ namespace RootTest
                 LocalPorts = "*",
                 Protocol = FirewallProtocol.TCP,
                 RemoteAddresses = "*",
-                RemotePorts = "*",
-                ServiceName = ""
-            });
+                RemotePorts = "*"
+            };
+            var newRule = cRule.ToAPIRule();
+
+            Firewall.AddRule(cRule);
+
             Console.ReadKey();
         }
     }

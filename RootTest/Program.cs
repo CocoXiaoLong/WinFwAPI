@@ -11,13 +11,24 @@ namespace RootTest
     {
         static void Main(string[] args)
         {
-            foreach (var rule in Firewall.GetRules())
+            var cRule = new FirewallRule
             {
-                Console.Write($"{rule.Action} {rule.Name} ");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"[{rule.Direction}|{rule.Protocol}]");
-                Console.ResetColor();
-            }
+                Name = "OneRule",
+                Action = FirewallAction.BLOCK,
+                ApplicationName = @"C:\DevResources\MicrosoftEdgeSetup.exe",
+                Description = "Block connections",
+                Direction = FirewallDirection.IN,
+                Grouping = "OneWay",
+                Enabled = true,
+                LocalAddresses = "*",
+                LocalPorts = "*",
+                Protocol = FirewallProtocol.TCP,
+                RemoteAddresses = "*",
+                RemotePorts = "*"
+            };
+
+            Firewall.AddRule(cRule);
+
             Console.ReadKey();
         }
     }

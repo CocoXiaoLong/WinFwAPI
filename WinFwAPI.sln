@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFwAPI", "WinFwAPI\WinFwAPI.csproj", "{F1FA9B9C-7D45-4B53-A405-7F0235D7B8CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RootTest", "RootTest\RootTest.csproj", "{7833D5FD-89EC-455C-A43A-D5066B91BB50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F1FA9B9C-7D45-4B53-A405-7F0235D7B8CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1FA9B9C-7D45-4B53-A405-7F0235D7B8CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1FA9B9C-7D45-4B53-A405-7F0235D7B8CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7833D5FD-89EC-455C-A43A-D5066B91BB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7833D5FD-89EC-455C-A43A-D5066B91BB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7833D5FD-89EC-455C-A43A-D5066B91BB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7833D5FD-89EC-455C-A43A-D5066B91BB50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,7 +5,7 @@ using System.Net.Sockets;
 
 namespace WinFwAPI
 {
-    public class FirewallRule
+    public sealed class FirewallRule
     {
         private bool import;
         private string name;

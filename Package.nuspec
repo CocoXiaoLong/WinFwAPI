@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>WinFwAPI</id>
+    <version>2.0.0</version>
+    <authors>z-col</authors>
+    <projectUrl>https://github.com/CocoXiaoLong/WinFwAPI</projectUrl>
+    <description>An API to manage the Windows-Firewall</description>
+    <releaseNotes></releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>Windows Windows-Firewall</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="System.IO" />
+        <dependency id="System.Security" />
+        <dependency id="System.Security.Principal" />
+        <dependency id="System.Linq" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
